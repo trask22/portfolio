@@ -1,0 +1,199 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+  width:100%;
+  height:100%;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+body{
+  font-family:Inter,sans-serif;
+  background:#0f172a;
+  color:#dbe4ee;
+  overflow:hidden;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.app-container{
+  width:100vw;
+  height:100vh;
+  display:flex;
+}
+
+/* =========================
+   LEFT PANEL
+========================= */
+
+.left-panel{
+
+  width:25%;
+  min-width:340px;
+
+  background:#1e293b;
+
+  border-right:1px solid #334155;
+
+  padding:2rem;
+
+  display:flex;
+  flex-direction:column;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-circle{
+
+  width:160px;
+  height:160px;
+
+  border:3px solid #60a5fa;
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#94a3b8;
+
+  margin-bottom:2rem;
+}
+
+/* =========================
+   IDENTITY ROW
+========================= */
+
+.identity-row{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:1rem;
+
+  margin-bottom:2.5rem;
+}
+
+.identity-left{
+  flex:1;
+}
+
+.identity-left h1{
+  font-size:2.1rem;
+  margin-bottom:0.5rem;
+}
+
+.subtitle{
+  color:#94a3b8;
+  font-size:0.85rem;
+}
+
+.identity-divider{
+
+  width:2px;
+  height:80px;
+
+  background:#60a5fa;
+}
+
+.identity-right{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:0.25rem;
+
+  font-size:1.2rem;
+}
+
+/* =========================
+   NAV BUTTONS
+========================= */
+
+.nav-buttons{
+
+  display:flex;
+  flex-direction:column;
+
+  gap:0.75rem;
+}
+
+.nav-buttons button{
+
+  background:transparent;
+
+  border:2px solid #60a5fa;
+
+  color:#dbe4ee;
+
+  padding:1rem;
+
+  font-size:1rem;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  cursor:pointer;
+}
+
+.nav-buttons button:hover{
+
+  background:rgba(96,165,250,0.12);
+}
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+.social-links{
+
+  margin-top:auto;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:0.15rem;
+}
+
+.social-links a{
+
+  color:#dbe4ee;
+
+  text-decoration:none;
+}
+
+.social-links a:hover{
+
+  color:#60a5fa;
+}
+
+/* =========================
+   RIGHT PANEL
+========================= */
+
+.right-panel{
+
+  flex:1;
+
+  padding:3rem;
+
+  overflow-y:auto;
+}
