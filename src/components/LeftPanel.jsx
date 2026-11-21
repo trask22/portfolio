@@ -1,5 +1,39 @@
-function LeftPanel({ currentView, setCurrentView }) {
+function LeftPanel({
+
+  currentView,
+  setCurrentView,
+
+  setSelectedProject,
+
+  activeDirectory,
+  setActiveDirectory
+
+}) {
+
+  const goToPage = (view) => {
+
+    setSelectedProject(null);
+
+    setActiveDirectory(null);
+
+    setCurrentView(view);
+
+  };
+
+  const openProjects = () => {
+
+    setActiveDirectory("projects");
+
+  };
+
+  const openClubs = () => {
+
+    setActiveDirectory("clubs");
+
+  };
+
   return (
+
     <div className="left-panel">
 
       <div className="profile-circle">
@@ -23,9 +57,11 @@ function LeftPanel({ currentView, setCurrentView }) {
         <div className="identity-divider"></div>
 
         <div className="identity-right">
+
           <span>Robotics</span>
           <span>Controls</span>
           <span>Design</span>
+
         </div>
 
       </div>
@@ -33,43 +69,43 @@ function LeftPanel({ currentView, setCurrentView }) {
       <div className="nav-buttons">
 
         <button
-          onClick={() => setCurrentView("about")}
+          onClick={() =>
+            goToPage("about")
+          }
         >
           <span>About / Hero</span>
 
-          {currentView === "about" && (
-            <span>▶</span>
-          )}
+          {currentView === "about" &&
+            <span>▶</span>}
         </button>
 
         <button
-          onClick={() => setCurrentView("projects")}
+          onClick={openProjects}
         >
           <span>Projects</span>
 
-          {currentView === "projects" && (
-            <span>▶</span>
-          )}
+          {activeDirectory === "projects" &&
+            <span>▶</span>}
         </button>
 
         <button
-          onClick={() => setCurrentView("clubs")}
+          onClick={openClubs}
         >
           <span>UoG Club Work</span>
 
-          {currentView === "clubs" && (
-            <span>▶</span>
-          )}
+          {activeDirectory === "clubs" &&
+            <span>▶</span>}
         </button>
 
         <button
-          onClick={() => setCurrentView("gallery")}
+          onClick={() =>
+            goToPage("gallery")
+          }
         >
           <span>Gallery</span>
 
-          {currentView === "gallery" && (
-            <span>▶</span>
-          )}
+          {currentView === "gallery" &&
+            <span>▶</span>}
         </button>
 
       </div>
@@ -77,13 +113,17 @@ function LeftPanel({ currentView, setCurrentView }) {
       <div className="social-links">
 
         <a href="#">Resume</a>
+
         <a href="#">LinkedIn</a>
+
         <a href="#">GitHub</a>
+
         <a href="#">GrabCAD</a>
 
       </div>
 
     </div>
+
   );
 }
 
