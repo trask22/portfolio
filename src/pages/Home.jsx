@@ -7,6 +7,9 @@ import ClubDirectory from "../components/ClubDirectory";
 
 function Home() {
 
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
   const [currentView, setCurrentView] =
     useState("about");
 
@@ -17,10 +20,11 @@ function Home() {
     useState(null);
 
   return (
-
     <div className="app-container">
 
       <LeftPanel
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
 
         currentView={currentView}
         setCurrentView={setCurrentView}
@@ -30,55 +34,59 @@ function Home() {
 
         activeDirectory={activeDirectory}
         setActiveDirectory={setActiveDirectory}
-
       />
 
-      {activeDirectory === "projects" && (
+      {menuOpen &&
+        activeDirectory === "projects" && (
+          <ProjectDirectory
+            setSelectedProject={(
+              project
+            ) => {
+              setSelectedProject(project);
 
-        <ProjectDirectory
+              setMenuOpen(false);
 
-          setSelectedProject={
-            setSelectedProject
-          }
+              setActiveDirectory(
+                null
+              );
+            }}
 
-          setActiveDirectory={
-            setActiveDirectory
-          }
-
-        />
-
+            setActiveDirectory={
+              setActiveDirectory
+            }
+          />
       )}
 
-      {activeDirectory === "clubs" && (
+      {menuOpen &&
+        activeDirectory === "clubs" && (
+          <ClubDirectory
+            setSelectedProject={(
+              project
+            ) => {
+              setSelectedProject(project);
 
-        <ClubDirectory
+              setMenuOpen(false);
 
-          setSelectedProject={
-            setSelectedProject
-          }
+              setActiveDirectory(
+                null
+              );
+            }}
 
-          setActiveDirectory={
-            setActiveDirectory
-          }
-
-        />
-
+            setActiveDirectory={
+              setActiveDirectory
+            }
+          />
       )}
 
       <RightPanel
-
         currentView={currentView}
-
         selectedProject={selectedProject}
-
         setSelectedProject={
           setSelectedProject
         }
-
       />
 
     </div>
-
   );
 }
 

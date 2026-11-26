@@ -1,21 +1,9 @@
-import { useState } from "react";
 import clubs from "../data/clubs";
 
 function ClubDirectory({
   setSelectedProject,
   setActiveDirectory
 }) {
-
-  const [openCategory, setOpenCategory] =
-    useState("ugrt");
-
-  const openProject = (id) => {
-
-    setSelectedProject(id);
-
-    setActiveDirectory(null);
-
-  };
 
   const uogProjects =
     Object.entries(clubs).filter(
@@ -29,78 +17,59 @@ function ClubDirectory({
         project.category === "ESW"
     );
 
-  return (
+  const openProject = (id) => {
+    setSelectedProject(id);
+    setActiveDirectory(null);
+  };
 
+  return (
     <div className="directory-panel">
 
       <h2>Club Work</h2>
 
-      <button
-        className="directory-category"
-        onClick={() =>
-          setOpenCategory("ugrt")
-        }
-      >
-        ▼ UGRT
-      </button>
+      <div className="directory-section">
 
-      {openCategory === "ugrt" && (
-
-        <div className="directory-projects">
-
-          {uogProjects.map(
-            ([id, project]) => (
-
-              <button
-                key={id}
-                onClick={() =>
-                  openProject(id)
-                }
-              >
-                {project.title}
-              </button>
-
-            )
-          )}
-
+        <div className="tile-category">
+          UGRT
         </div>
 
-      )}
+        {uogProjects.map(
+          ([id, project]) => (
+            <button
+              key={id}
+              onClick={() =>
+                openProject(id)
+              }
+            >
+              {project.title}
+            </button>
+          )
+        )}
 
-      <button
-        className="directory-category"
-        onClick={() =>
-          setOpenCategory("esw")
-        }
-      >
-        ▼ ESW
-      </button>
+      </div>
 
-      {openCategory === "esw" && (
+      <div className="directory-section">
 
-        <div className="directory-projects">
-
-          {eswProjects.map(
-            ([id, project]) => (
-
-              <button
-                key={id}
-                onClick={() =>
-                  openProject(id)
-                }
-              >
-                {project.title}
-              </button>
-
-            )
-          )}
-
+        <div className="tile-category">
+          ESW
         </div>
 
-      )}
+        {eswProjects.map(
+          ([id, project]) => (
+            <button
+              key={id}
+              onClick={() =>
+                openProject(id)
+              }
+            >
+              {project.title}
+            </button>
+          )
+        )}
+
+      </div>
 
     </div>
-
   );
 }
 

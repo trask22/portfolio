@@ -1,21 +1,9 @@
-import { useState } from "react";
 import projects from "../data/projects";
 
 function ProjectDirectory({
   setSelectedProject,
   setActiveDirectory
 }) {
-
-  const [openCategory, setOpenCategory] =
-    useState("robotics");
-
-  const openProject = (id) => {
-
-    setSelectedProject(id);
-
-    setActiveDirectory(null);
-
-  };
 
   const roboticsProjects =
     Object.entries(projects).filter(
@@ -35,100 +23,78 @@ function ProjectDirectory({
         project.category === "Design"
     );
 
+  const openProject = (id) => {
+    setSelectedProject(id);
+    setActiveDirectory(null);
+  };
+
   return (
     <div className="directory-panel">
 
       <h2>Projects</h2>
 
-      <button
-        className="directory-category"
-        onClick={() =>
-          setOpenCategory("robotics")
-        }
-      >
-        ▼ Robotics
-      </button>
+      <div className="directory-section">
 
-      {openCategory === "robotics" && (
-        <div className="directory-projects">
-
-          {roboticsProjects.map(
-            ([id, project]) => (
-
-              <button
-                key={id}
-                onClick={() =>
-                  openProject(id)
-                }
-              >
-                {project.title}
-              </button>
-
-            )
-          )}
-
+        <div className="tile-category">
+          Robotics
         </div>
-      )}
 
-      <button
-        className="directory-category"
-        onClick={() =>
-          setOpenCategory("controls")
-        }
-      >
-        ▼ Controls
-      </button>
+        {roboticsProjects.map(
+          ([id, project]) => (
+            <button
+              key={id}
+              onClick={() =>
+                openProject(id)
+              }
+            >
+              {project.title}
+            </button>
+          )
+        )}
 
-      {openCategory === "controls" && (
-        <div className="directory-projects">
+      </div>
 
-          {controlsProjects.map(
-            ([id, project]) => (
+      <div className="directory-section">
 
-              <button
-                key={id}
-                onClick={() =>
-                  openProject(id)
-                }
-              >
-                {project.title}
-              </button>
-
-            )
-          )}
-
+        <div className="tile-category">
+          Controls
         </div>
-      )}
 
-      <button
-        className="directory-category"
-        onClick={() =>
-          setOpenCategory("design")
-        }
-      >
-        ▼ Design
-      </button>
+        {controlsProjects.map(
+          ([id, project]) => (
+            <button
+              key={id}
+              onClick={() =>
+                openProject(id)
+              }
+            >
+              {project.title}
+            </button>
+          )
+        )}
 
-      {openCategory === "design" && (
-        <div className="directory-projects">
+      </div>
 
-          {designProjects.map(
-            ([id, project]) => (
+      <div className="directory-section">
 
-              <button
-                key={id}
-                onClick={() =>
-                  openProject(id)
-                }
-              >
-                {project.title}
-              </button>
-
-            )
-          )}
-
+        <div className="tile-category">
+          Design
         </div>
-      )}
+
+        {designProjects.map(
+          ([id, project]) => (
+            <button
+              key={id}
+              onClick={() =>
+                openProject(id)
+              }
+            >
+              {project.title}
+            </button>
+          )
+        )}
+
+      </div>
 
     </div>
   );
