@@ -555,3 +555,89 @@ body{
   left: 0 !important;
   width: 420px;
 }
+.tile-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-tile {
+  width: 100%;
+
+  background: transparent;
+
+  border: 1px solid #60a5fa;
+
+  color: white;
+
+  cursor: pointer;
+
+  padding: 0;
+
+  overflow: hidden;
+}
+
+.tile-image {
+  height: 180px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(96,165,250,0.12);
+
+  color: #94a3b8;
+}
+
+.tile-title {
+  padding: 1rem;
+
+  font-size: 1.05rem;
+
+  text-align: left;
+}
+/* ==========================================
+   PHASE 5.6 CASCADING PANELS
+========================================== */
+
+.category-panel {
+  position: fixed;
+
+  left: 320px;
+
+  top: 0;
+
+  width: 320px;
+
+  height: 100vh;
+
+  background: #1e293b;
+
+  border-right: 1px solid #334155;
+
+  padding: 120px 20px 20px 20px;
+
+  z-index: 950;
+}
+
+.tiles-panel {
+  position: fixed;
+
+  left: 640px;
+
+  top: 0;
+
+  width: 550px;
+
+  height: 100vh;
+
+  background: #1a2436;
+
+  border-right: 1px solid #334155;
+
+  padding: 120px 20px 20px 20px;
+
+  overflow-y: auto;
+
+  z-index: 960;
+}

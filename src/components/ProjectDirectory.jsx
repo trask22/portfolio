@@ -1,98 +1,45 @@
-import projects from "../data/projects";
-
 function ProjectDirectory({
-  setSelectedProject,
-  setActiveDirectory
+  setSelectedCategory
 }) {
-
-  const roboticsProjects =
-    Object.entries(projects).filter(
-      ([, project]) =>
-        project.category === "Robotics"
-    );
-
-  const controlsProjects =
-    Object.entries(projects).filter(
-      ([, project]) =>
-        project.category === "Controls"
-    );
-
-  const designProjects =
-    Object.entries(projects).filter(
-      ([, project]) =>
-        project.category === "Design"
-    );
-
-  const openProject = (id) => {
-    setSelectedProject(id);
-    setActiveDirectory(null);
-  };
-
   return (
-    <div className="directory-panel">
+    <div className="category-panel">
 
       <h2>Projects</h2>
 
       <div className="directory-section">
 
-        <div className="tile-category">
+        <button
+          className="tile-category"
+          onClick={() =>
+            setSelectedCategory(
+              "Robotics"
+            )
+          }
+        >
           Robotics
-        </div>
+        </button>
 
-        {roboticsProjects.map(
-          ([id, project]) => (
-            <button
-              key={id}
-              onClick={() =>
-                openProject(id)
-              }
-            >
-              {project.title}
-            </button>
-          )
-        )}
-
-      </div>
-
-      <div className="directory-section">
-
-        <div className="tile-category">
+        <button
+          className="tile-category"
+          onClick={() =>
+            setSelectedCategory(
+              "Controls"
+            )
+          }
+        >
           Controls
-        </div>
+        </button>
 
-        {controlsProjects.map(
-          ([id, project]) => (
-            <button
-              key={id}
-              onClick={() =>
-                openProject(id)
-              }
-            >
-              {project.title}
-            </button>
-          )
-        )}
-
-      </div>
-
-      <div className="directory-section">
-
-        <div className="tile-category">
+        <button
+          className="tile-category"
+          onClick={() =>
+            setSelectedCategory(
+              "Design"
+            )
+          }
+        >
           Design
-        </div>
-
-        {designProjects.map(
-          ([id, project]) => (
-            <button
-              key={id}
-              onClick={() =>
-                openProject(id)
-              }
-            >
-              {project.title}
-            </button>
-          )
-        )}
+        </button>
 
       </div>
 

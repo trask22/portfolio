@@ -36,8 +36,7 @@ function LeftPanel({
         AT
       </button>
 
-      {menuOpen &&
-        activeDirectory === null && (
+      {menuOpen && (
 
         <div className="navigation-overlay">
 
@@ -128,6 +127,7 @@ function LeftPanel({
           </div>
 
         </div>
+
       )}
     </>
   );
