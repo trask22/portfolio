@@ -8,13 +8,21 @@ function LeftPanel({
   setSelectedProject,
 
   activeDirectory,
-  setActiveDirectory
+  setActiveDirectory,
+
+  setSelectedCategory,
+  setSelectedClubCategory
 }) {
 
   const navigateTo = (view) => {
     setSelectedProject(null);
     setActiveDirectory(null);
+
+    setSelectedCategory(null);
+    setSelectedClubCategory(null);
+
     setCurrentView(view);
+
     setMenuOpen(false);
   };
 
@@ -25,10 +33,19 @@ function LeftPanel({
         onClick={() => {
 
           if (menuOpen) {
+
             setMenuOpen(false);
+
             setActiveDirectory(null);
+
+            setSelectedCategory(null);
+
+            setSelectedClubCategory(null);
+
           } else {
+
             setMenuOpen(true);
+
           }
 
         }}
@@ -75,21 +92,33 @@ function LeftPanel({
               </button>
 
               <button
-                onClick={() =>
+                onClick={() => {
+
                   setActiveDirectory(
                     "projects"
-                  )
-                }
+                  );
+
+                  setSelectedCategory(
+                    "Robotics"
+                  );
+
+                }}
               >
                 Projects →
               </button>
 
               <button
-                onClick={() =>
+                onClick={() => {
+
                   setActiveDirectory(
                     "clubs"
-                  )
-                }
+                  );
+
+                  setSelectedClubCategory(
+                    "UGRT"
+                  );
+
+                }}
               >
                 UoG Club Work →
               </button>

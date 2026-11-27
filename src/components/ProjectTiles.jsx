@@ -1,15 +1,26 @@
 import projects from "../data/projects";
 
 function ProjectTiles({
-  category,
   setSelectedProject,
   setActiveDirectory
 }) {
 
-  const filteredProjects =
+  const roboticsProjects =
     Object.entries(projects).filter(
       ([, project]) =>
-        project.category === category
+        project.category === "Robotics"
+    );
+
+  const controlsProjects =
+    Object.entries(projects).filter(
+      ([, project]) =>
+        project.category === "Controls"
+    );
+
+  const designProjects =
+    Object.entries(projects).filter(
+      ([, project]) =>
+        project.category === "Design"
     );
 
   const openProject = (id) => {
@@ -20,11 +31,87 @@ function ProjectTiles({
   return (
     <div className="tiles-panel">
 
-      <h2>{category}</h2>
+      <h2 id="robotics-section">
+        Robotics
+      </h2>
 
       <div className="tile-grid">
 
-        {filteredProjects.map(
+        {roboticsProjects.map(
+          ([id, project]) => (
+
+            <button
+              key={id}
+              className="project-tile"
+              onClick={() =>
+                openProject(id)
+              }
+            >
+
+              <div className="tile-image">
+                Image
+              </div>
+
+              <div className="tile-title">
+                {project.title}
+              </div>
+
+            </button>
+
+          )
+        )}
+
+      </div>
+
+      <h2
+        id="controls-section"
+        style={{
+          marginTop: "2rem"
+        }}
+      >
+        Controls
+      </h2>
+
+      <div className="tile-grid">
+
+        {controlsProjects.map(
+          ([id, project]) => (
+
+            <button
+              key={id}
+              className="project-tile"
+              onClick={() =>
+                openProject(id)
+              }
+            >
+
+              <div className="tile-image">
+                Image
+              </div>
+
+              <div className="tile-title">
+                {project.title}
+              </div>
+
+            </button>
+
+          )
+        )}
+
+      </div>
+
+      <h2
+        id="design-section"
+        style={{
+          marginTop: "2rem"
+        }}
+      >
+        Design
+      </h2>
+
+      <div className="tile-grid">
+
+        {designProjects.map(
           ([id, project]) => (
 
             <button

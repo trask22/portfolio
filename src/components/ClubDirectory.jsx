@@ -1,8 +1,8 @@
 import clubs from "../data/clubs";
 
 function ClubDirectory({
-  setSelectedProject,
-  setActiveDirectory
+  setSelectedClubCategory,
+  setSelectedProject
 }) {
 
   const uogProjects =
@@ -17,55 +17,87 @@ function ClubDirectory({
         project.category === "ESW"
     );
 
-  const openProject = (id) => {
-    setSelectedProject(id);
-    setActiveDirectory(null);
+  const scrollToSection = (
+    sectionId
+  ) => {
+    document
+      .getElementById(sectionId)
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
   };
 
   return (
-    <div className="directory-panel">
+    <div className="category-panel">
 
       <h2>Club Work</h2>
 
       <div className="directory-section">
 
-        <div className="tile-category">
-          UGRT
+        <button
+          className="tile-category"
+          onClick={() => {
+            setSelectedClubCategory(
+              "UGRT"
+            );
+
+            scrollToSection(
+              "ugrt-section"
+            );
+          }}
+        >
+          ▼ UGRT
+        </button>
+
+        <div className="directory-projects">
+
+          {uogProjects.map(
+            ([id, project]) => (
+              <button
+                key={id}
+                onClick={() =>
+                  setSelectedProject(id)
+                }
+              >
+                {project.title}
+              </button>
+            )
+          )}
+
         </div>
 
-        {uogProjects.map(
-          ([id, project]) => (
-            <button
-              key={id}
-              onClick={() =>
-                openProject(id)
-              }
-            >
-              {project.title}
-            </button>
-          )
-        )}
+        <button
+          className="tile-category"
+          onClick={() => {
+            setSelectedClubCategory(
+              "ESW"
+            );
 
-      </div>
+            scrollToSection(
+              "esw-section"
+            );
+          }}
+        >
+          ▼ ESW
+        </button>
 
-      <div className="directory-section">
+        <div className="directory-projects">
 
-        <div className="tile-category">
-          ESW
+          {eswProjects.map(
+            ([id, project]) => (
+              <button
+                key={id}
+                onClick={() =>
+                  setSelectedProject(id)
+                }
+              >
+                {project.title}
+              </button>
+            )
+          )}
+
         </div>
-
-        {eswProjects.map(
-          ([id, project]) => (
-            <button
-              key={id}
-              onClick={() =>
-                openProject(id)
-              }
-            >
-              {project.title}
-            </button>
-          )
-        )}
 
       </div>
 

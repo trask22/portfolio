@@ -1,6 +1,39 @@
+import projects from "../data/projects";
+
 function ProjectDirectory({
-  setSelectedCategory
+  setSelectedCategory,
+  setSelectedProject
 }) {
+
+  const roboticsProjects =
+    Object.entries(projects).filter(
+      ([, project]) =>
+        project.category === "Robotics"
+    );
+
+  const controlsProjects =
+    Object.entries(projects).filter(
+      ([, project]) =>
+        project.category === "Controls"
+    );
+
+  const designProjects =
+    Object.entries(projects).filter(
+      ([, project]) =>
+        project.category === "Design"
+    );
+
+  const scrollToSection = (
+    sectionId
+  ) => {
+    document
+      .getElementById(sectionId)
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+  };
+
   return (
     <div className="category-panel">
 
@@ -10,36 +43,96 @@ function ProjectDirectory({
 
         <button
           className="tile-category"
-          onClick={() =>
+          onClick={() => {
             setSelectedCategory(
               "Robotics"
-            )
-          }
+            );
+            scrollToSection(
+              "robotics-section"
+            );
+          }}
         >
-          Robotics
+          ▼ Robotics
         </button>
+
+        <div className="directory-projects">
+
+          {roboticsProjects.map(
+            ([id, project]) => (
+              <button
+                key={id}
+                onClick={() =>
+                  setSelectedProject(id)
+                }
+              >
+                {project.title}
+              </button>
+            )
+          )}
+
+        </div>
 
         <button
           className="tile-category"
-          onClick={() =>
+          onClick={() => {
             setSelectedCategory(
               "Controls"
-            )
-          }
+            );
+            scrollToSection(
+              "controls-section"
+            );
+          }}
         >
-          Controls
+          ▼ Controls
         </button>
+
+        <div className="directory-projects">
+
+          {controlsProjects.map(
+            ([id, project]) => (
+              <button
+                key={id}
+                onClick={() =>
+                  setSelectedProject(id)
+                }
+              >
+                {project.title}
+              </button>
+            )
+          )}
+
+        </div>
 
         <button
           className="tile-category"
-          onClick={() =>
+          onClick={() => {
             setSelectedCategory(
               "Design"
-            )
-          }
+            );
+            scrollToSection(
+              "design-section"
+            );
+          }}
         >
-          Design
+          ▼ Design
         </button>
+
+        <div className="directory-projects">
+
+          {designProjects.map(
+            ([id, project]) => (
+              <button
+                key={id}
+                onClick={() =>
+                  setSelectedProject(id)
+                }
+              >
+                {project.title}
+              </button>
+            )
+          )}
+
+        </div>
 
       </div>
 
